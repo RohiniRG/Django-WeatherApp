@@ -1,1 +1,1 @@
-web: gunicorn shortener.wsgi --log-file -
+web: gunicorn Weather.wsgi --log-file -
