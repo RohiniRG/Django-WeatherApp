@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static "styles/main.css" %}'>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="app twelve columns">
+                <h1 class="headline">Weather Forecast <span class="location"></span></h1>
+                
+                <div class="row">
+                    <div class="eight columns offset-by-two">
+                        <span style="font-size: 2.0em; color: #F1F7ED;">
+                            {% if city %}
+                                <center><b>{{city}} ({{country}}) : {{description}}</b></span></center>
+                            {% elif city == 0 %}
+                                <center><b>City not found!</b></span></center>
+                            {% else %}
+                            {% endif %}
+                        <div class="weather-info">
+                            <div class="weather-info-animation">
+                                <img src={{icon}}>
+                        </div>
+                    </div>		
+                </div>
+
+                <div class="row">
+                    <div class="eight columns offset-by-two">
+                        <div class="weather-info-text">
+                            <div class="one-third column">
+                                <span class="time-city"><b>Time</b></span>
+                            </div>
+                            <div class="one-third column">
+                                <div class="temperature">
+                                    <span class="temp-celsius"><b>Temp (°C)</b></span>
+                                    <span class="temp-fahrenheit hidden">F</span>
+                                </div> 
+                            </div>
+                            <div class="one-third column">
+                                <span class="weather-condition"><b>Date</b></span>
+                            </div>							
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="eight columns offset-by-two">
+                        <div class="weather-info-text">
+                            <div class="one-third column">
+                                <span style="color: #F1F7ED" class="time-city">{{time}}</span>
+                            </div>
+                            <div class="one-third column">
+                                <div class="temperature">
+                                    <span style="color: #F1F7ED" class="temp-celsius">{{temperature}}</span>
+                                </div> 
+                            </div>
+                            <div class="one-third column">
+                                <span style="color: #F1F7ED" class="weather-condition">{{date}}</span>
+                            </div>							
+                        </div>
+                    </div>
+                </div>					
+                        
+                    <div class="row">
+                        <div class="search-weather eight columns offset-by-two">
+                            <center><h3>Find a Forecast</h3></center>
+                            <form id="my-form" action="" method="POST">
+                            {% csrf_token %}
+                                <input type="text" placeholder="Enter a city" name="cityname" class="find-forcast">
+                                <center><button type="submit" class="btn-search">Search</button></center>
+                            </form>
+                        </div>
+                    </div>
+    
+    
+            </div> 
+        </div>
+    </div> 
+</body>
